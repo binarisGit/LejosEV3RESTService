@@ -15,7 +15,9 @@ jrun -cp lejos-rest-api-1.0.jar de.binaris.lejos.application.Application
 
 You can use the chrome extension "postman" for sending HTTP-Requests: https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop
 
+example request: **10.0.0.44:8080/lejosdifferentpilotapi/beep**
+
 
 **Hinweis:**
 
-Das Projekt kann lokal als gewöhnliche JavaApplication gestartet werden (sinnvoll fürs debuggen). Der REST-Server ist dann über http://localhost:8080/... erreichbar.
+Das Projekt kann lokal als gewöhnliche **JavaApplication** gestartet werden (sinnvoll fürs debuggen). Der REST-Server ist dann über **http://localhost:8080/...** erreichbar.
