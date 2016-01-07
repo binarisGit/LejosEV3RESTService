@@ -10,6 +10,8 @@
 jrun -cp lejos-rest-api-1.0.jar de.binaris.lejos.application.Application
 ```
 
+**Achtung: ev3classes.jar muss ebenfalls im lib-Ordner liegen und der CLASS-PATH in der Pom korrekt angepasst werden!**
+
 
 # Usage #
 
