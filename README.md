@@ -1,9 +1,10 @@
 # Installation #
 
-1. build project: maven->build->"clean install"
-2. copy resulting .jar inside target folder to "~/lejos/lib" via scp (for windows users: https://winscp.net/eng/docs/lang:de)
-3. login on EV3 via SSH (for windows users: http://www.putty.org/)
-4. from putty-commandline start server on lejos: 
+ download lejos.zip and move it to your local maven repository
+ build project: maven->build->"clean install"
+ copy resulting .jar inside target folder to "~/lejos/lib" via scp (for windows users: https://winscp.net/eng/docs/lang:de)
+ login on EV3 via SSH (for windows users: http://www.putty.org/)
+ from putty-commandline start server on lejos: 
 ```
 #!text
 
