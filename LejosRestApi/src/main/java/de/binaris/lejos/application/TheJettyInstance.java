@@ -94,8 +94,10 @@ public class TheJettyInstance {
 				.getCanonicalName();
 		String soundRestServiceName=de.binaris.lejos.restful.api.EV3SoundRestService.class
 				.getCanonicalName();
+		String colorRestServiceName=de.binaris.lejos.restful.api.EV3ColorSensorRestService.class
+				.getCanonicalName();
 		
-		String commaSeparatedRestServiceNames= differentialPilotRestServiceName+ "," + soundRestServiceName;
+		String commaSeparatedRestServiceNames= differentialPilotRestServiceName+ "," + soundRestServiceName+","+colorRestServiceName;
 		
 		entryPoints
 				.put("jersey.config.server.provider.classnames",commaSeparatedRestServiceNames);

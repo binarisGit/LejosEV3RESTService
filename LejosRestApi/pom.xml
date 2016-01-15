@@ -69,7 +69,7 @@
 			<groupId>lejos</groupId>
 			<artifactId>ev3</artifactId>
 			<version>1.0</version>
-			<scope>test</scope>
+			<scope>provided</scope>
 		</dependency>
 
 
