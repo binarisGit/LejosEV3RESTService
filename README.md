@@ -1,6 +1,6 @@
 # Installation #
 
-1.  download [lejos.zip](https://bitbucket.org/Cappin79/lejosev3restservice/downloads/lejos.zip) and move the contained unzipped directory to your local maven repository (e.g. C:\Users\Christian.Asus-F550LC\\.m2\repository\lejos). Do not forget to update your maven afterwards!
+1.  download [lejos.zip](https://bitbucket.org/Cappin79/lejosev3restservice/downloads/lejos.zip) and move the contained unzipped directory to your local maven repository (e.g. C:\Users\Christian.Asus-F550LC\\.m2\repository\lejos). **If a folder named "lejos" already exists, replace it.** Do not forget to update your maven afterwards!
 2.  build project: maven->build->"clean install"
 3.  copy resulting .jar inside target folder to "~/lejos/lib" via scp (for windows users: https://winscp.net/eng/docs/lang:de)
 4.  login on EV3 via SSH (for windows users: http://www.putty.org/)
