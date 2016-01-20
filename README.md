@@ -1,3 +1,9 @@
+# Description #
+
+This project contains a RESTful Webservice for the lejOS EV3 LEGO MINDSTORMS brick based on an embedded jetty server and JAX-RS. It uses the [lejOS EV3 API](http://www.lejos.org/ev3/docs/) and is capable of rotating, running, making sounds and scanning colors. 
+
+
+
 # Installation #
 
 1.  download [lejos.zip](https://bitbucket.org/Cappin79/lejosev3restservice/downloads/lejos.zip) and move the contained unzipped directory to your local maven repository (e.g. C:\Users\Christian.Asus-F550LC\\.m2\repository\lejos). **If a folder named "lejos" already exists, replace it.** Do not forget to update your maven afterwards!
