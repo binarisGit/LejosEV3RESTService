@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.9.2
 Created-By: 1.7.0_67-b01 (Oracle Corporation)
+Class-Path: /home/root/lejos/lib/ev3classes.jar  /home/root/lejos/libjna/usr/share/java/jna.jar
 Main-Class: Application
-Class-Path: /home/root/lejos/lib/ev3classes.jar /home/root/lejos/lib/lejos-rest-api-1.0.jar /home/root/lejos/libjna/usr/share/java/jna.jar

@@ -1,4 +1,4 @@
-package de.binaris.lejos.restful.api;
+package de.binaris.lejos.restful.services;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -7,20 +7,17 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import lejos.hardware.motor.Motor;
 import lejos.robotics.navigation.DifferentialPilot;
+import de.binaris.lejos.restful.api.IDifferentialPilotRestService;
 
 @Path("differentialpilot")
-public class EV3DifferentialPilotRestService {
+public class EV3DifferentialPilotRestService implements
+		IDifferentialPilotRestService {
 
-	private static DifferentialPilot pilot;
+	private DifferentialPilot pilot;
 
-	public EV3DifferentialPilotRestService() {
-
-		if (pilot == null) {
-			pilot = new DifferentialPilot(3.2d, 3.2d, 17.9d, Motor.B, Motor.A,
-					false);
-		}
+	public EV3DifferentialPilotRestService(DifferentialPilot pilot) {
+		this.pilot = pilot;
 	}
 
 	@GET
@@ -30,11 +27,7 @@ public class EV3DifferentialPilotRestService {
 			throws Exception {
 		System.out
 				.println("running endpoint wurde aufgerufen mit synchronized auf methode");
-
-		 synchronized (pilot) {
 		pilot.travel(rundistance);
-		 }
-
 		return Response.status(200).header("Access-Control-Allow-Origin", "*")
 				.build();
 	}
@@ -42,9 +35,7 @@ public class EV3DifferentialPilotRestService {
 	@GET
 	@Path("stop")
 	public void stop() {
-		synchronized (pilot) {
-			pilot.stop();
-		}
+		pilot.stop();
 	}
 
 	@GET
@@ -67,8 +58,6 @@ public class EV3DifferentialPilotRestService {
 		return Response.status(200).header("Access-Control-Allow-Origin", "*")
 				.build();
 	}
-
-	
 
 	@GET
 	@Path("getMovementIncrement")

@@ -1,11 +1,19 @@
 package de.binaris.lejos.application;
 
-import java.util.HashMap;
-import java.util.Map;
+import lejos.hardware.motor.Motor;
+import lejos.hardware.port.SensorPort;
+import lejos.hardware.sensor.EV3ColorSensor;
+import lejos.robotics.navigation.DifferentialPilot;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.servlet.ServletContainer;
+
+import de.binaris.lejos.restful.services.EV3ColorSensorRestService;
+import de.binaris.lejos.restful.services.EV3DifferentialPilotRestService;
+import de.binaris.lejos.restful.services.EV3SoundRestService;
 
 public class TheJettyInstance {
 
@@ -18,11 +26,6 @@ public class TheJettyInstance {
 			initJettyContextAndDeploy();
 			startJettyServer();
 
-			/*
-			 * if (jettyServer != null) { shutDownAndStartJettyServer(); } else
-			 * { createTheJettyInstance(); }
-			 */
-
 		} catch (Exception e) {
 			try {
 				context.stop();
@@ -33,12 +36,6 @@ public class TheJettyInstance {
 				System.exit(0);
 			}
 		}
-	}
-
-	private void createTheJettyInstance() throws Exception {
-		jettyServer = new Server(8080);
-		initJettyContextAndDeploy();
-		shutDownAndStartJettyServer();
 	}
 
 	private void startJettyServer() throws Exception, InterruptedException {
@@ -54,54 +51,23 @@ public class TheJettyInstance {
 
 	}
 
-	private void shutDownAndStartJettyServer() {
-
-		jettyServer.setStopTimeout(10000L);
-		try {
-			new Thread() {
-				@Override
-				public void run() {
-					try {
-						context.stop();
-						jettyServer.stop();
-						startJettyServer();
-					} catch (Exception ex) {
-						System.out.println("Failed to stop Jetty");
-					}
-				}
-			}.start();
-		} catch (Exception e1) {
-			System.out.println("Failed to start Jetty: " + e1.getMessage());
-			System.exit(0);
-		}
-	}
-
 	private void initJettyContextAndDeploy() {
 
+		ResourceConfig resourceConfig = new ResourceConfig();
+
+		resourceConfig.register(new EV3DifferentialPilotRestService(
+				new DifferentialPilot(3.2d, 3.2d, 17.9d, Motor.B, Motor.A,
+						false)));
+		resourceConfig.register(new EV3SoundRestService());
+		resourceConfig.register(new EV3ColorSensorRestService(
+				new EV3ColorSensor(SensorPort.S3)));
+
 		context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-		context.setContextPath("/");
+
+		ServletHolder servletHolder = new ServletHolder(new ServletContainer(resourceConfig));
+		context.addServlet(servletHolder, "/*");
 
 		jettyServer.setHandler(context);
 
-		ServletHolder jerseyServlet = context.addServlet(
-				org.glassfish.jersey.servlet.ServletContainer.class, "/*");
-		jerseyServlet.setInitOrder(0);
-
-		// Tells the Jersey Servlet which REST service/class to load.
-		Map<String, String> entryPoints = new HashMap<String, String>();
-		
-		String differentialPilotRestServiceName=de.binaris.lejos.restful.api.EV3DifferentialPilotRestService.class
-				.getCanonicalName();
-		String soundRestServiceName=de.binaris.lejos.restful.api.EV3SoundRestService.class
-				.getCanonicalName();
-		String colorRestServiceName=de.binaris.lejos.restful.api.EV3ColorSensorRestService.class
-				.getCanonicalName();
-		
-		String commaSeparatedRestServiceNames= differentialPilotRestServiceName+ "," + soundRestServiceName+","+colorRestServiceName;
-		
-		entryPoints
-				.put("jersey.config.server.provider.classnames",commaSeparatedRestServiceNames);
-
-		jerseyServlet.setInitParameters(entryPoints);
 	}
 }
