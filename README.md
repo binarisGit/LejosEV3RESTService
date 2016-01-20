@@ -9,12 +9,23 @@ This project contains a RESTful Webservice for the lejOS EV3 LEGO MINDSTORMS bri
 2.  build project: maven->build->"clean install"
 3.  copy resulting .jar inside target folder to "~/lejos/lib" via scp (for windows users: https://winscp.net/eng/docs/lang:de)
 4.  login on EV3 via SSH (for windows users: http://www.putty.org/)
-5.  from putty-commandline start server on lejos: 
+5.  change to lib directory and start server on lejos: 
+
+
 ```
 #!text
 
-jrun -cp lejos-rest-api-1.0.jar de.binaris.lejos.application.Application
+cd ~/lejos/lib
 ```
+
+
+```
+#!text
+
+jrun -cp lejos-rest-api-1.0.jar de.binaris.lejos.application.Applicati
+```
+on
+
 
 *Attention*: ev3classes.jar must reside inside the folder and the class-path inside the pom.xml must be configured correctly!
 
