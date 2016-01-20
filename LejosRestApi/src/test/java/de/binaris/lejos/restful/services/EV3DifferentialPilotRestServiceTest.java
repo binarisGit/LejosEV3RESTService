@@ -26,12 +26,42 @@ public class EV3DifferentialPilotRestServiceTest {
 	}
 
 	@Test
-	public void ev3mindstorm_shoud_stop() {
-
+	public void ev3mindstorm_should_stop() {
 		ev3DifferentialPilotRestService.stop();
-
 		Mockito.verify(pilot, Mockito.times(1)).stop();
 
 	}
+	
+	@Test
+	public void ev3mindstorm_should_quickstop() {
+		ev3DifferentialPilotRestService.quickstop();
+		Mockito.verify(pilot, Mockito.times(1)).quickStop();
+
+	}
+	
+	
+	@Test
+	public void ev3mindstorm_should_run_5_cm() {
+		ev3DifferentialPilotRestService.run(5);
+		Mockito.verify(pilot, Mockito.times(1)).travel(5);
+		
+		
+		
+	}
+	
+	@Test
+	public void ev3mindstorm_should_call_getMovementIncrement_once() {
+		ev3DifferentialPilotRestService.getMovementIncrement();
+		Mockito.verify(pilot, Mockito.times(1)).getMovementIncrement();
+	}
+	
+	@Test
+	public void ev3mindstorm_should_rotate_45() {
+		ev3DifferentialPilotRestService.rotate(45);
+		Mockito.verify(pilot, Mockito.times(1)).rotate(45);
+	}
+
+	
+	
 
 }

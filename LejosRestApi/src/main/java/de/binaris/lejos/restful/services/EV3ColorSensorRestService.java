@@ -23,16 +23,14 @@ public class EV3ColorSensorRestService implements IColorSensorInterface {
 	@GET
 	@Path("getcolor")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getcolor() throws Exception {
-		System.out.println("color endpoint wurde aufgerufen");
+	public Response getcolor() {
 
 		ev3ColorSensor.setFloodlight(true);
 		float[] colorFarbe = { 0 };
 		ev3ColorSensor.fetchSample(colorFarbe, 0);
-		System.out.println("sample  " + colorFarbe[0]);
 		Float color = Float.valueOf(colorFarbe[0]);
-
 		ev3ColorSensor.setFloodlight(false);
+		
 		return Response.ok("{\"color\":" + color + "}").status(200)
 				.header("Access-Control-Allow-Origin", "*").build();
 	}

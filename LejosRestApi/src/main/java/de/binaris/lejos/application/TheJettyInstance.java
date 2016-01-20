@@ -11,6 +11,9 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+
+
+
 import de.binaris.lejos.restful.services.EV3ColorSensorRestService;
 import de.binaris.lejos.restful.services.EV3DifferentialPilotRestService;
 import de.binaris.lejos.restful.services.EV3SoundRestService;
@@ -59,8 +62,7 @@ public class TheJettyInstance {
 				new DifferentialPilot(3.2d, 3.2d, 17.9d, Motor.B, Motor.A,
 						false)));
 		resourceConfig.register(new EV3SoundRestService());
-		resourceConfig.register(new EV3ColorSensorRestService(
-				new EV3ColorSensor(SensorPort.S3)));
+		resourceConfig.register(new EV3ColorSensorRestService(new EV3ColorSensor(SensorPort.S3)));
 
 		context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
