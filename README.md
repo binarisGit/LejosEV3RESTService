@@ -43,9 +43,3 @@ example URLs:
 
 <replace_with_your_IP>:8080/color/getcolor
 ```
-
-
-
-**Hinweis:**
-
-Das Projekt kann lokal als gewöhnliche **JavaApplication** gestartet werden (sinnvoll fürs debuggen). Der REST-Server ist dann über **http://localhost:8080/...** erreichbar.
