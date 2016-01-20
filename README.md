@@ -26,7 +26,7 @@ jrun -cp lejos-rest-api-1.0.jar de.binaris.lejos.application.Applicati
 ```
 
 
-*Attention*: ev3classes.jar must reside inside the folder and the class-path inside the pom.xml must be configured correctly!
+*Attention*: **ev3classes.jar** must reside inside the folder and the class-path inside the pom.xml must be configured correctly!
 
 # Usage #
 
