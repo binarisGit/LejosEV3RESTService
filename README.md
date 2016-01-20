@@ -16,8 +16,7 @@ This project contains a RESTful Webservice for the lejOS EV3 LEGO MINDSTORMS bri
 jrun -cp lejos-rest-api-1.0.jar de.binaris.lejos.application.Application
 ```
 
-**Achtung: ev3classes.jar muss ebenfalls im lib-Ordner liegen und der CLASS-PATH in der Pom korrekt angepasst werden!**
-
+**Attention: ev3classes.jar must reside inside the folder and the class-path inside the pom.xml must be configured correctly!
 
 # Usage #
 
