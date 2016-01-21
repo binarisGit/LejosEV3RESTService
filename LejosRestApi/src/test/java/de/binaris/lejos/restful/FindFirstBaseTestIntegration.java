@@ -2,15 +2,15 @@ package de.binaris.lejos.restful;
 
 import org.fest.assertions.Assertions;
 
-import de.binaris.lejos.restful.api.IColorSensorInterface;
-import de.binaris.lejos.restful.api.IDifferentialPilotRestService;
+import de.binaris.lejos.restful.api.ColorSensorAdapter;
+import de.binaris.lejos.restful.api.DifferentialPilotAdapter;
 
 public class FindFirstBaseTestIntegration {
 	
-	private IColorSensorInterface ev3ColorSensorRestService;
-	private IDifferentialPilotRestService eV3DifferentialPilotRestService;
+	private ColorSensorAdapter ev3ColorSensorRestService;
+	private DifferentialPilotAdapter eV3DifferentialPilotRestService;
 	
-	public FindFirstBaseTestIntegration(IColorSensorInterface ev3ColorSensorRestService, IDifferentialPilotRestService eV3DifferentialPilotRestService) {
+	public FindFirstBaseTestIntegration(ColorSensorAdapter ev3ColorSensorRestService, DifferentialPilotAdapter eV3DifferentialPilotRestService) {
 		this.ev3ColorSensorRestService = ev3ColorSensorRestService;
 		this.eV3DifferentialPilotRestService = eV3DifferentialPilotRestService;
 	}

@@ -1,4 +1,4 @@
-package de.binaris.lejos.restful.services;
+package unit.de.binaris.lejos.restful.services;
 
 import lejos.robotics.navigation.DifferentialPilot;
 
@@ -10,12 +10,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.verify;
+
+import de.binaris.lejos.restful.services.EV3DifferentialPilotRestAdapter;
+
 @RunWith(MockitoJUnitRunner.class)
 public class EV3DifferentialPilotRestServiceTest {
 
 	// SUT
 	@InjectMocks
-	private EV3DifferentialPilotRestService ev3DifferentialPilotRestService;
+	private EV3DifferentialPilotRestAdapter ev3DifferentialPilotRestService;
 	
 	
 	@Mock
@@ -28,14 +32,14 @@ public class EV3DifferentialPilotRestServiceTest {
 	@Test
 	public void ev3mindstorm_should_stop() {
 		ev3DifferentialPilotRestService.stop();
-		Mockito.verify(pilot, Mockito.times(1)).stop();
+		verify(pilot, Mockito.times(1)).stop();
 
 	}
 	
 	@Test
 	public void ev3mindstorm_should_quickstop() {
 		ev3DifferentialPilotRestService.quickstop();
-		Mockito.verify(pilot, Mockito.times(1)).quickStop();
+		verify(pilot, Mockito.times(1)).quickStop();
 
 	}
 	
@@ -43,22 +47,22 @@ public class EV3DifferentialPilotRestServiceTest {
 	@Test
 	public void ev3mindstorm_should_run_5_cm() {
 		ev3DifferentialPilotRestService.run(5);
-		Mockito.verify(pilot, Mockito.times(1)).travel(5);
+		verify(pilot, Mockito.times(1)).travel(5);
 		
 		
 		
 	}
 	
 	@Test
-	public void ev3mindstorm_should_call_getMovementIncrement_once() {
+	public void ev3mindstorm_should_get_movementIncrement() {
 		ev3DifferentialPilotRestService.getMovementIncrement();
-		Mockito.verify(pilot, Mockito.times(1)).getMovementIncrement();
+		verify(pilot, Mockito.times(1)).getMovementIncrement();
 	}
 	
 	@Test
 	public void ev3mindstorm_should_rotate_45() {
 		ev3DifferentialPilotRestService.rotate(45);
-		Mockito.verify(pilot, Mockito.times(1)).rotate(45);
+		verify(pilot, Mockito.times(1)).rotate(45);
 	}
 
 	

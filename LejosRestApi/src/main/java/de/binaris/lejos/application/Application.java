@@ -4,7 +4,7 @@ import lejos.robotics.navigation.DifferentialPilot;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
-import de.binaris.lejos.restful.services.EV3DifferentialPilotRestService;
+import de.binaris.lejos.restful.services.EV3DifferentialPilotRestAdapter;
 
 public class Application {
 

@@ -8,8 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import de.binaris.lejos.restful.services.EV3ColorSensorRestServiceTest;
-import de.binaris.lejos.restful.services.EV3DifferentialPilotRestService;
+import unit.de.binaris.lejos.restful.services.EV3ColorSensorRestServiceTest;
+import de.binaris.lejos.restful.services.EV3DifferentialPilotRestAdapter;
 
 public class FindFirstBaseTest {
 	
@@ -17,7 +17,7 @@ public class FindFirstBaseTest {
 	private FindFirstBase findFirstBase;
 	
 	private EV3ColorSensorRestServiceTest ev3ColorSensorRestService;
-	private EV3DifferentialPilotRestService eV3DifferentialPilotRestService;
+	private EV3DifferentialPilotRestAdapter eV3DifferentialPilotRestService;
 	
 //	@Before
 //	public void setUp() throws Exception {

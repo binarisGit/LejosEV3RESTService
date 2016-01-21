@@ -2,15 +2,15 @@ package de.binaris.lejos.restful;
 
 import javax.ws.rs.core.Response;
 
-import de.binaris.lejos.restful.api.IColorSensorInterface;
-import de.binaris.lejos.restful.api.IDifferentialPilotRestService;
+import de.binaris.lejos.restful.api.ColorSensorAdapter;
+import de.binaris.lejos.restful.api.DifferentialPilotAdapter;
 
 public class FindFirstBase {
 	
-	private IColorSensorInterface ev3ColorSensorRestService;
-	private IDifferentialPilotRestService eV3DifferentialPilotRestService;
+	private ColorSensorAdapter ev3ColorSensorRestService;
+	private DifferentialPilotAdapter eV3DifferentialPilotRestService;
 	
-	public FindFirstBase(IColorSensorInterface ev3ColorSensorRestService, IDifferentialPilotRestService eV3DifferentialPilotRestService) {
+	public FindFirstBase(ColorSensorAdapter ev3ColorSensorRestService, DifferentialPilotAdapter eV3DifferentialPilotRestService) {
 		this.ev3ColorSensorRestService = ev3ColorSensorRestService;
 		this.eV3DifferentialPilotRestService = eV3DifferentialPilotRestService;
 	}

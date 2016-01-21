@@ -8,22 +8,21 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import lejos.robotics.navigation.DifferentialPilot;
-import de.binaris.lejos.restful.api.IDifferentialPilotRestService;
+import de.binaris.lejos.restful.api.DifferentialPilotAdapter;
 
 @Path("differentialpilot")
-public class EV3DifferentialPilotRestService implements
-		IDifferentialPilotRestService {
+public class EV3DifferentialPilotRestAdapter implements
+		DifferentialPilotAdapter {
 
 	public static final String HEADER_ACCESS="Access-Control-Allow-Origin";
 	private DifferentialPilot pilot;
 
-	public EV3DifferentialPilotRestService(DifferentialPilot pilot) {
+	public EV3DifferentialPilotRestAdapter(DifferentialPilot pilot) {
 		this.pilot = pilot;
 	}
 
 	@GET
 	@Path("run/{rundistance}")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response run(@PathParam("rundistance") int rundistance) {
 		pilot.travel(rundistance);
 		return Response.status(200).header(HEADER_ACCESS, "*").build();
@@ -32,7 +31,6 @@ public class EV3DifferentialPilotRestService implements
 
 	@GET
 	@Path("stop")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response stop() {
 		pilot.stop();
 		return Response.status(200).header(HEADER_ACCESS, "*").build();
@@ -40,7 +38,6 @@ public class EV3DifferentialPilotRestService implements
 
 	@GET
 	@Path("quickstop")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response quickstop() {
 		pilot.quickStop();
 		return Response.status(200).header(HEADER_ACCESS, "*").build();
@@ -48,7 +45,6 @@ public class EV3DifferentialPilotRestService implements
 
 	@GET
 	@Path("rotate/{degree}")
-	@Produces(MediaType.APPLICATION_JSON)
 	public Response rotate(@PathParam("degree") int degree) {
 		pilot.rotate(degree);
 		return Response.status(200).header(HEADER_ACCESS, "*").build();
@@ -56,10 +52,9 @@ public class EV3DifferentialPilotRestService implements
 
 	@GET
 	@Path("getmovementincrement")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public Response getMovementIncrement() {
-		String jsonMovementIncrement = "{\"movementincrement\": "
-				+ pilot.getMovementIncrement() + "}";
+		String jsonMovementIncrement = "{\"movementincrement\": "+ pilot.getMovementIncrement() + "}";
 		return Response.status(200).header(HEADER_ACCESS, "*").entity(jsonMovementIncrement).build();
 	}
 }
