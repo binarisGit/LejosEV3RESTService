@@ -9,12 +9,10 @@ import javax.ws.rs.core.Response;
 
 import lejos.robotics.navigation.DifferentialPilot;
 import de.binaris.lejos.restful.api.DifferentialPilotAdapter;
+import de.binaris.lejos.restful.config.Config;
 
 @Path("differentialpilot")
-public class EV3DifferentialPilotRestAdapter implements
-		DifferentialPilotAdapter {
-
-	public static final String HEADER_ACCESS="Access-Control-Allow-Origin";
+public class EV3DifferentialPilotRestAdapter implements DifferentialPilotAdapter {
 	private DifferentialPilot pilot;
 
 	public EV3DifferentialPilotRestAdapter(DifferentialPilot pilot) {
@@ -25,36 +23,35 @@ public class EV3DifferentialPilotRestAdapter implements
 	@Path("run/{rundistance}")
 	public Response run(@PathParam("rundistance") int rundistance) {
 		pilot.travel(rundistance);
-		return Response.status(200).header(HEADER_ACCESS, "*").build();
-
+		return Response.status(200).header(Config.HEADER_ACCESS, "*").build();
 	}
 
 	@GET
 	@Path("stop")
 	public Response stop() {
 		pilot.stop();
-		return Response.status(200).header(HEADER_ACCESS, "*").build();
+		return Response.status(200).header(Config.HEADER_ACCESS, "*").build();
 	}
 
 	@GET
 	@Path("quickstop")
 	public Response quickstop() {
 		pilot.quickStop();
-		return Response.status(200).header(HEADER_ACCESS, "*").build();
+		return Response.status(200).header(Config.HEADER_ACCESS, "*").build();
 	}
 
 	@GET
 	@Path("rotate/{degree}")
 	public Response rotate(@PathParam("degree") int degree) {
 		pilot.rotate(degree);
-		return Response.status(200).header(HEADER_ACCESS, "*").build();
+		return Response.status(200).header(Config.HEADER_ACCESS, "*").build();
 	}
 
 	@GET
 	@Path("getmovementincrement")
 	@Produces(MediaType.TEXT_PLAIN)
 	public Response getMovementIncrement() {
-		String jsonMovementIncrement = "{\"movementincrement\": "+ pilot.getMovementIncrement() + "}";
-		return Response.status(200).header(HEADER_ACCESS, "*").entity(jsonMovementIncrement).build();
+		String jsonMovementIncrement = "{\"movementincrement\": " + pilot.getMovementIncrement() + "}";
+		return Response.status(200).header(Config.HEADER_ACCESS, "*").entity(jsonMovementIncrement).build();
 	}
 }

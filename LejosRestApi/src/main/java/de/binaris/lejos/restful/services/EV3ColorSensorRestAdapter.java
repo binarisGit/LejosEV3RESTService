@@ -6,29 +6,24 @@ import javax.ws.rs.core.Response;
 
 import lejos.hardware.sensor.EV3ColorSensor;
 import de.binaris.lejos.restful.api.ColorSensorAdapter;
+import de.binaris.lejos.restful.config.Config;
 
 @Path("color")
 public class EV3ColorSensorRestAdapter implements ColorSensorAdapter {
-
 	private EV3ColorSensor ev3ColorSensor;
 
 	public EV3ColorSensorRestAdapter(EV3ColorSensor ev3ColorSensor) {
-
 		this.ev3ColorSensor = ev3ColorSensor;
 	}
 
-	
 	@GET
 	@Path("getcolor")
 	public Response getcolor() {
-
 		ev3ColorSensor.setFloodlight(true);
 		float[] colorFarbe = { 0 };
 		ev3ColorSensor.fetchSample(colorFarbe, 0);
 		Float color = Float.valueOf(colorFarbe[0]);
 		ev3ColorSensor.setFloodlight(false);
-		
-		return Response.ok("{\"color\":" + color + "}").status(200).header("Access-Control-Allow-Origin", "*").build();
+		return Response.ok("{\"color\":" + color + "}").status(200).header(Config.HEADER_ACCESS, "*").build();
 	}
-
 }

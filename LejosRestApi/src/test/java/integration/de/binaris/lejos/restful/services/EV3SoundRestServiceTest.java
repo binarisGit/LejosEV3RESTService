@@ -17,7 +17,6 @@ import de.binaris.lejos.restful.config.Config;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EV3SoundRestServiceTest {
-
 	private Client client;
 
 	@Before
@@ -27,14 +26,13 @@ public class EV3SoundRestServiceTest {
 
 	@Test
 	public void ev3MindStorm_should_beep() {
-		Response response = client.target(Config.BASE_URL+"/sound/beep").request().get(Response.class);
-		assertThat("ev3mindstorm did not beep", response.getStatus(),is(equalTo(200)));
+		Response response = client.target(Config.BASE_URL + "/sound/beep").request().get(Response.class);
+		assertThat("ev3mindstorm did not beep", response.getStatus(), is(equalTo(200)));
 	}
 
 	@Test
 	public void ev3MindStorm_should_buzz() {
-		Response response = client.target(Config.BASE_URL+"/sound/buzz").request().get(Response.class);
-		assertThat("ev3mindstorm did not buzz", response.getStatus(),is(equalTo(200)));
+		Response response = client.target(Config.BASE_URL + "/sound/buzz").request().get(Response.class);
+		assertThat("ev3mindstorm did not buzz", response.getStatus(), is(equalTo(200)));
 	}
-
 }
