@@ -60,6 +60,53 @@
 					</execution>
 				</executions>
 			</plugin>
+
+
+			<plugin>
+				<groupId>com.sun.jersey.contribs</groupId>
+				<artifactId>maven-wadl-plugin</artifactId>
+				<version>1.19</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<phase>${javadoc-phase}</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<wadlFile>${project.build.outputDirectory}/application.wadl
+					</wadlFile>
+					<formatWadlFile>true</formatWadlFile>
+					<baseUri>http://10.0.0.44:8080/</baseUri>
+					<packagesResourceConfig>
+						<param>de.binaris.lejos.restful.services</param>
+					</packagesResourceConfig>
+					<wadlGenerators>
+						<wadlGeneratorDescription>
+							<className>com.sun.jersey.server.wadl.generators.WadlGeneratorApplicationDoc
+							</className>
+							<properties>
+								<property>
+									<name>applicationDocsFile</name>
+									<value>${basedir}/src/main/doc/application-doc.xml</value>
+								</property>
+							</properties>
+						</wadlGeneratorDescription>
+						<wadlGeneratorDescription>
+							<className>com.sun.jersey.server.wadl.generators.WadlGeneratorGrammarsSupport
+							</className>
+							<properties>
+								<property>
+									<name>grammarsFile</name>
+									<value>${basedir}/src/main/doc/application-grammars.xml</value>
+								</property>
+							</properties>
+						</wadlGeneratorDescription>
+					</wadlGenerators>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

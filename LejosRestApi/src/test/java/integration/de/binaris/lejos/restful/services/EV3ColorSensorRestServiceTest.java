@@ -15,8 +15,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import de.binaris.lejos.restful.config.Config;
 
-
-
 @RunWith(MockitoJUnitRunner.class)
 public class EV3ColorSensorRestServiceTest {
 	private Client client;
