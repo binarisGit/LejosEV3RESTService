@@ -7,7 +7,8 @@ import static org.junit.Assert.assertThat;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
-import org.json.JSONObject;
+import lejos.robotics.Color;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,9 +27,7 @@ public class EV3ColorSensorRestServiceTest {
 
 	@Test
 	public void ev3mindstorm_should_get_color_white() {
-		String response = client.target(Config.BASE_URL + "/color/getcolor").request().get(String.class);
-		JSONObject jsonObject = new JSONObject(response);
-		Double color = jsonObject.getDouble("color");
-		assertThat("color is not white", color, is(equalTo(6.0)));
+		Integer color = client.target(Config.BASE_URL + "/color/getcolor").request().get(Integer.class);
+		assertThat("color is not white", color, is(equalTo(Color.WHITE)));
 	}
 }

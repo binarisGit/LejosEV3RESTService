@@ -1,15 +1,13 @@
 package de.binaris.lejos.restful.api;
 
-import javax.ws.rs.core.Response;
-
 public interface DifferentialPilotAdapter {
-	public abstract Response run(int rundistance) throws Exception;
+	public abstract void run(int rundistance) throws Exception;
 
-	public abstract Response stop();
+	public abstract void stop();
 
-	public abstract Response quickstop();
+	public abstract void quickstop();
 
-	public abstract Response rotate(int degree);
+	public abstract void rotate(int degree);
 
-	public abstract Response getMovementIncrement();
+	public abstract float getMovementIncrement();
 }

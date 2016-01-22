@@ -27,12 +27,12 @@ public class EV3SoundRestServiceTest {
 	@Test
 	public void ev3MindStorm_should_beep() {
 		Response response = client.target(Config.BASE_URL + "/sound/beep").request().get(Response.class);
-		assertThat("ev3mindstorm did not beep", response.getStatus(), is(equalTo(200)));
+		assertThat("ev3mindstorm did not beep", response.getStatus(), is(equalTo(204)));
 	}
 
 	@Test
 	public void ev3MindStorm_should_buzz() {
 		Response response = client.target(Config.BASE_URL + "/sound/buzz").request().get(Response.class);
-		assertThat("ev3mindstorm did not buzz", response.getStatus(), is(equalTo(200)));
+		assertThat("ev3mindstorm did not buzz", response.getStatus(), is(equalTo(204)));
 	}
 }

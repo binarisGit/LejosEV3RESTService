@@ -21,10 +21,7 @@ public class EV3ColorSensorRestServiceTest {
 
 	@Test
 	public void should_call_getColor() {
-		float[] colorFarbe = { 0 };
-		ev3ColorSensorRestService.getcolor();
-		verify(ev3ColorSensor).setFloodlight(true);
-		verify(ev3ColorSensor).fetchSample(colorFarbe, 0);
-		verify(ev3ColorSensor).setFloodlight(false);
+		ev3ColorSensorRestService.getColor();
+		verify(ev3ColorSensor).getColorID();
 	}
 }

@@ -49,8 +49,7 @@
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
 									<manifestEntries>
-										<Class-Path>/home/root/lejos/lib/ev3classes.jar
-											/home/root/lejos/libjna/usr/share/java/jna.jar</Class-Path>
+										<Class-Path>/home/root/lejos/lib/ev3classes.jar /home/root/lejos/libjna/usr/share/java/jna.jar</Class-Path>
 										<Main-Class>de.binaris.lejos.application.Application</Main-Class>
 
 									</manifestEntries>

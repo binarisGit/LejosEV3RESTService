@@ -1,16 +1,14 @@
 package unit.de.binaris.lejos.restful.services;
 
+import static org.mockito.Mockito.verify;
 import lejos.robotics.navigation.DifferentialPilot;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import static org.mockito.Mockito.verify;
 
 import de.binaris.lejos.restful.services.EV3DifferentialPilotRestAdapter;
 
@@ -21,10 +19,6 @@ public class EV3DifferentialPilotRestServiceTest {
 	private EV3DifferentialPilotRestAdapter ev3DifferentialPilotRestService;
 	@Mock
 	private DifferentialPilot pilot;
-
-	@Before
-	public void setup() {
-	}
 
 	@Test
 	public void ev3mindstorm_should_stop() {

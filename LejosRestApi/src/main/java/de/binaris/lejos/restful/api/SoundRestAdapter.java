@@ -1,9 +1,7 @@
 package de.binaris.lejos.restful.api;
 
-import javax.ws.rs.core.Response;
-
 public interface SoundRestAdapter {
-	public abstract Response beep();
+	public abstract void beep();
 
-	public abstract Response buzz();
+	public abstract void buzz();
 }
