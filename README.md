@@ -23,7 +23,7 @@ cd ~/lejos/lib
 ```
 #!text
 
-jrun -cp lejos-rest-api-1.0.jar de.binaris.lejos.application.Applicati
+jrun -cp lejos-rest-api-1.0.jar de.binaris.lejos.application.Application
 ```
 
 
