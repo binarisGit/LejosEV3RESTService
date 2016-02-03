@@ -1,4 +1,4 @@
-![binarisInformatikHeadBanner.PNG](https://bitbucket.org/repo/96p5ar/images/3651728320-binarisInformatikHeadBanner.PNG)
+![binarisInformatikHeadBanner.PNG](https://bitbucket-assetroot.s3.amazonaws.com/repository/96p5ar/3651728320-binarisInformatikHeadBanner.PNG?Signature=xIs1BuLPXZWHb71q43%2BOAwbgVTk%3D&Expires=1454491747&AWSAccessKeyId=AKIAIWY5XSVPZPDQYRQQ)
 # Description #
 
 This project contains a RESTful Webservice for the lejOS EV3 LEGO MINDSTORMS brick based on an embedded jetty server and JAX-RS. It uses the [lejOS EV3 API](http://www.lejos.org/ev3/docs/) to let robots run, rotate, scan colors and make noises.
